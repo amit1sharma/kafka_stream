@@ -37,7 +37,9 @@ repositories {
 }
 
 dependencies {
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
 	implementation 'org.springframework.boot:spring-boot-starter'
+// 	implementation ('org.springframework.boot:spring-boot-starter-web')
 	implementation 'org.apache.kafka:kafka-streams'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
