@@ -10,7 +10,7 @@ buildscript {
   }
 }
 apply plugin: 'java'
-apply plugin: 'war'
+// apply plugin: 'war'
 apply plugin: "org.springframework.boot"
 apply plugin: "io.spring.dependency-management"
 apply plugin: 'maven'
@@ -38,10 +38,13 @@ repositories {
 
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
-	implementation 'org.springframework.boot:spring-boot-starter'
-// 	implementation ('org.springframework.boot:spring-boot-starter-web')
-	implementation 'org.apache.kafka:kafka-streams'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation ('org.springframework.boot:spring-boot-starter')
+	compile ('org.apache.kafka:kafka-streams:2.0.0'){
+	    exclude group: 'org.apache.kafka', module: 'connect-json'
+	}
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.0.0'
+
+// 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
